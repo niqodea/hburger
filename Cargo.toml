@@ -1,0 +1,16 @@
+[package]
+name = "hburger"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clap = { version = "4.5", features = ["derive"] }
+fasthash = "0.4"
+
+# Ref: https://stackoverflow.com/a/54842093
+[profile.release]
+opt-level = 'z'
+lto = true
+codegen-units = 1
+panic = 'abort'
+strip = true
