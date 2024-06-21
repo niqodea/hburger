@@ -131,7 +131,18 @@ fn burgerize(string: &String, args: &BurgerizeArgs) -> String {
     let right_bun = &string[string.len() - args.right_bun_length..];
 
     let patty = &string[args.left_bun_length..string.len() - args.right_bun_length];
-    let hashpatty = &Hash32::hash(patty.as_bytes()).to_string()[..args.center_hashpatty_length];
+    let hashpatty = format!(
+        "{:0>hashpatty_length$}", // Pad with zeros if necessary to keep fixed length
+        &Hash32::hash(patty.as_bytes())
+            .to_string()
+            // Take the last digits (higher entropy)
+            .chars()
+            .rev()
+            .take(args.center_hashpatty_length)
+            // Don't care about reversing them again, they're supposedly random
+            .collect::<String>(),
+        hashpatty_length = args.center_hashpatty_length,
+    );
 
     let hashburger = format!("{left_bun}{hashpatty}{right_bun}");
     hashburger
