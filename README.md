@@ -52,7 +52,7 @@ supercalifragilisticexpialidocious
 is
 
 ```
-superc402ocious
+superc390ocious
 ```
 
 A hashburger is composed of:
@@ -66,7 +66,7 @@ Below we visually denote left bun (`<`), right bun (`>`), patty (`~`), and hashp
 supercalifragilisticexpialidocious
 <<<<<<~~~~~~~~~~~~~~~~~~~~~~>>>>>>
 
-superc402ocious
+superc390ocious
 <<<<<<===>>>>>>
 ```
 
@@ -94,22 +94,22 @@ For example, a hashburger of the path string
 is
 
 ```
-/super829atibus
+/super649atibus
 ```
 
 While the string is now fixed in length, information like number of components and their names has been lost, which is suboptimal.
 
 To address this, we can compute the hashburger of each component separately and then put them back together, obtaining the much more informative string
 ```
-/superc402ocious/foo/honori397atibus
+/superc390ocious/foo/honori978atibus
 ```
 
 We can also pad short strings to maintain equal spacing between `/`.
 In this way, path strings with same number of components will retain the same length, providing a more uniform look that can enhance user experience:
 ```
-/superc402ocious/foo            /honori397atibus
-/superc402ocious/foobar         /honori397atibus
-/superc402ocious/lopado390erygon/honori397atibus
+/superc390ocious/foo            /honori978atibus
+/superc390ocious/foobar         /honori978atibus
+/superc390ocious/lopado664erygon/honori978atibus
 ```
 
 Another thing to note is that the number of components in a path is unbounded.
@@ -122,7 +122,7 @@ Consider the path string
 Simply turning the individual components to hashburgers will still result in an exceedingly long string:
 
 ```
-/superc520ious-1/superc520ious-2/superc520ious-3/superc520ious-4/superc520ious-5/superc520ious-6
+/superc016ious-1/superc016ious-2/superc016ious-3/superc016ious-4/superc016ious-5/superc016ious-6
 ```
 
 We can achieve fixed length by specifying a limit on the number of components displayed and omitting the middle components, analogously to how we omit the central part of strings with hashpatties.
@@ -130,7 +130,7 @@ The underlying assumption is that the path components we usually care about are 
 A possible resulting string would then be
 
 ```
-/superc520ious-1/superc520ious-2:superc520ious-5/superc520ious-6
+/superc016ious-1/superc016ious-2:superc016ious-5/superc016ious-6
 ```
 
 With a `:` separator informing us that some components have been omitted.
@@ -148,15 +148,15 @@ In particular:
 Here is the previous example with a reworked prompt that features hasburgers (with line wrapping denoted by `|`):
 
 ```
-a1e@o2c[~/]% cd supercalifragilisticexpialidocious                                      |
-a1e@o2c[~/supe21ious]% cd foo                                                           |
-a1e@o2c[~/supe21ious/foo       ]% cd honorificabilitudinitatibus                        |
-a1e@o2c[~/supe21ious/foo       /hono25ibus]% cd ../../foobar                            |
-a1e@o2c[~/supe21ious/foobar    ]% cd honorificabilitudinitatibus                        |
-a1e@o2c[~/supe21ious/foobar    /hono25ibus]% cd foo                                     |
-a1e@o2c[~/supe21ious/foobar    /hono25ibus/foo       ]% cd bar                          |
-a1e@o2c[~/supe21ious/foo       :foo       /bar       ]% cd baz                          |
-a1e@o2c[~/supe21ious/foo       :bar       /baz       ]%                                 |
+a7e@o1c[~/]% cd supercalifragilisticexpialidocious                                      |
+a7e@o1c[~/supe17ious]% cd foo                                                           |
+a7e@o1c[~/supe17ious/foo       ]% cd honorificabilitudinitatibus                        |
+a7e@o1c[~/supe17ious/foo       /hono21ibus]% cd ../../foobar                            |
+a7e@o1c[~/supe17ious/foobar    ]% cd honorificabilitudinitatibus                        |
+a7e@o1c[~/supe17ious/foobar    /hono21ibus]% cd foo                                     |
+a7e@o1c[~/supe17ious/foobar    /hono21ibus/foo       ]% cd bar                          |
+a7e@o1c[~/supe17ious/foo       :foo       /bar       ]% cd baz                          |
+a7e@o1c[~/supe17ious/foo       :bar       /baz       ]%                                 |
 ```
 
 As you can see, we no longer incur in annoying line wrapping, making the user experience linear and pleasant.
@@ -174,8 +174,8 @@ Finally, the number of components is a tradeoff between conciseness and complete
 Download the tarball and extract:
 
 ```
-wget https://github.com/niqodea/hburger/releases/download/v0.1.0/hburger-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
-tar -xzf hburger-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
+wget https://github.com/niqodea/hburger/releases/download/v0.2.0/hburger-v0.2.0-x86_64-unknown-linux-gnu.tar.gz
+tar -xzf hburger-v0.2.0-x86_64-unknown-linux-gnu.tar.gz
 ```
 
 then `cp` the `hburger` binary in the `bin` directory.
