@@ -1,5 +1,5 @@
 _user_hburger() {
-    hburger hash "$USER" -l 1 -c 1 -r 1
+    hburger hash -l 1 -c 1 -r 1 -- "$USER"
 }
 
 _cwd_hburgers() {
@@ -17,19 +17,20 @@ _cwd_hburgers() {
     fi
 
     # Adjust these arguments to your liking
-    hburger hash-path "$relpath" \
+    hburger hash-path \
         --left-bun-length 4 \
         --center-hashpatty-length 2 \
         --right-bun-length 4 \
         --padding-char " " \
         --start-components 2 \
         --end-components 2 \
-        --divider ":"
+        --divider ":" \
+        -- "$relpath"
 }
 
 # For bash
 _bash_host_hburger() {
-    hburger hash "$HOSTNAME" -l 1 -c 1 -r 1
+    hburger hash -l 1 -c 1 -r 1 -- "$HOSTNAME"
 }
 BASH_USERHOST_COLOR='\[\e[38;5;99m\]'  # Purple
 BASH_CWD_COLOR='\[\e[38;5;220m\]'   # Yellow
@@ -38,7 +39,7 @@ PS1="$BASH_USERHOST_COLOR"'$(_user_hburger)@$(_bash_host_hburger)'"$BASH_CWD_COL
 
 # For zsh
 _zsh_host_hburger() {
-    hburger hash "$HOST" -l 1 -c 1 -r 1
+    hburger hash -l 1 -c 1 -r 1 -- "$HOST"
 }
 ZSH_USERHOST_COLOR='%F{099}'  # Purple
 ZSH_CWD_COLOR='%F{220}'  # Yellow
