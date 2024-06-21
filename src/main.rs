@@ -140,6 +140,8 @@ fn burgerize(string: &String, args: &BurgerizeArgs) -> String {
             .rev()
             .take(args.center_hashpatty_length)
             // Don't care about reversing them again, they're supposedly random
+            // TODO: Reverse them anyways, it makes sense for the hashpatty to grow from left to
+            // right when considering the same input string and different hashpatty lengths
             .collect::<String>(),
         hashpatty_length = args.center_hashpatty_length,
     );

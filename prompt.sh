@@ -16,7 +16,15 @@ _cwd_hburgers() {
         return
     fi
 
-    hburger hash-path "$relpath" -l 4 -c 2 -r 4 -s 2 -e 2 -p " "
+    # Adjust these arguments to your liking
+    hburger hash-path "$relpath" \
+        --left-bun-length 4 \
+        --center-hashpatty-length 2 \
+        --right-bun-length 4 \
+        --padding-char " " \
+        --start-components 2 \
+        --end-components 2 \
+        --divider ":"
 }
 
 # For bash
