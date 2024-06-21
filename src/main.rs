@@ -61,7 +61,12 @@ enum Commands {
 
 #[derive(Parser)]
 struct BurgerizeArgs {
-    #[arg(short, long, default_value = "4", help = "The length of the hashburger's left bun")]
+    #[arg(
+        short,
+        long,
+        default_value = "4",
+        help = "The length of the hashburger's left bun"
+    )]
     left_bun_length: usize,
 
     #[arg(
@@ -72,10 +77,19 @@ struct BurgerizeArgs {
     )]
     center_hashpatty_length: usize,
 
-    #[arg(short, long, default_value = "4", help = "The length of the hashburger's right bun")]
+    #[arg(
+        short,
+        long,
+        default_value = "4",
+        help = "The length of the hashburger's right bun"
+    )]
     right_bun_length: usize,
 
-    #[arg(short, long, help = "The character to use to pad hashburgers (defaults to no padding)")]
+    #[arg(
+        short,
+        long,
+        help = "The character to use to pad hashburgers (defaults to no padding)"
+    )]
     padding_char: Option<char>,
 }
 
