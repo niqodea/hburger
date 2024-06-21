@@ -144,7 +144,7 @@ checksum = "8f5f3913fa0bfe7ee1fd8248b6b9f42a5af4b9d65ec2dd2c3c26132b950ecfc2"
 
 [[package]]
 name = "hburger"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "clap",
  "fasthash",

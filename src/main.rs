@@ -7,7 +7,7 @@ use fasthash::FastHash;
 #[derive(Parser)]
 #[command(
     name = "hburger",
-    version = "0.1.0",
+    version = "0.2.0",
     about = "Turn strings into hashburgers"
 )]
 struct Args {
