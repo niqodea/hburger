@@ -1,6 +1,6 @@
 # hburger
 
-A command to turn long strings and paths into readable, recognizable, finite-length strings, as well as a minimal shell setup to keep your prompt length in check.
+A command to turn long strings and paths into readable, recognizable, fixed-length strings, as well as a minimal shell setup to keep your prompt length in check.
 
 ## The Problem
 
@@ -41,7 +41,7 @@ This is where hasburgers come into play.
 
 ## The Hashburger
 
-A hashburger is a finite-length, user-friendly representation of a string.
+A hashburger is a fixed-length, user-friendly representation of a long string.
 
 For example, a hashburger of the string
 
@@ -72,9 +72,9 @@ superc402ocious
 
 Hashburgers are:
 
-* **Bounded**: By construction, the length of a hashburger cannot exceed the sum of the lengths of the buns and hashpatty, no matter how long the original string is.
+* **Fixed-length**: By construction, the length of a hashburger is always the sum of the lengths of the buns and hashpatty, no matter how long the original string is.
 * **Distinguishable**: Even in the case where two different strings share the same left and right bun, the hashpatty serves as a best-effort last resort to tell them apart.
-* **Adjustable**: You can tune the length of left bun, right bun, and hashpatty to fit your use case. You can also decide whether to pad short strings to maintain uniform length across hashburgers.
+* **Adjustable**: You can tune the length of left bun, right bun, and hashpatty to fit your use case. You can also decide whether to pad short strings to maintain uniform lengths regardless of the lengths of the original strings.
 
 Moreover, depending on the situation, hashburger can be:
 
@@ -83,7 +83,7 @@ Moreover, depending on the situation, hashburger can be:
 
 ## Hashburgers for Paths
 
-While compressing a string as a plain hashburger might be enough in some situations, other use cases might benefit from a more careful approach.
+While compressing a string as a plain hashburger can be enough in some situations, other use cases might benefit from a more careful approach.
 
 For example, a hashburger of the path string
 
@@ -97,7 +97,7 @@ is
 /super829atibus
 ```
 
-While the string is now finite in length, information like number of components and their names has been lost, which is suboptimal.
+While the string is now fixed in length, information like number of components and their names has been lost, which is suboptimal.
 
 To address this, we can compute the hashburger of each component separately and then put them back together, obtaining the much more informative string
 ```
@@ -125,7 +125,7 @@ Simply turning the individual components to hashburgers will still result in an 
 /superc520ious-1/superc520ious-2/superc520ious-3/superc520ious-4/superc520ious-5/superc520ious-6
 ```
 
-We can achieve finite length by specifying a limit on the number of components displayed and omitting the middle components, analogously to how we omit the central part of strings with hashpatties.
+We can achieve fixed length by specifying a limit on the number of components displayed and omitting the middle components, analogously to how we omit the central part of strings with hashpatties.
 The underlying assumption is that the path components we usually care about are at the start and/or end of the path.
 A possible resulting string would then be
 
@@ -159,7 +159,7 @@ a1e@o2c[~/supe21ious/foo       :foo       /bar       ]% cd baz                  
 a1e@o2c[~/supe21ious/foo       :bar       /baz       ]%                                 |
 ```
 
-As you can see, we no longer incur in nasty line wrapping, making the user experience linear and pleasant.
+As you can see, we no longer incur in annoying line wrapping, making the user experience linear and pleasant.
 
 Parameters such as bun length, hashpatty length, and number of components can be tuned to suit one's preference.
 In the example above, we went for very small hashburgers for the user and host, since these values are likely to be recognizable anyways.
@@ -191,7 +191,10 @@ then `cp` the `hburger` binary in the `bin` directory.
    cp hburger ~/.local/bin
    ```
 
-You now have access to the `hburger` command, which you can use to derive hashburgers from strings and paths.
+After installation, run the following to make sure everything went smoothly and to get started with the command:
+```sh
+hburger --help
+```
 
 ### Hashburger Prompt
 
