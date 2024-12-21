@@ -1,8 +1,8 @@
+use std::collections::hash_map::DefaultHasher;
+use std::hash::{Hash, Hasher};
 use std::path::{Component, PathBuf};
 
 use clap::{Parser, Subcommand};
-use fasthash::city::Hash32;
-use fasthash::FastHash;
 
 #[derive(Parser)]
 #[command(
@@ -131,18 +131,26 @@ fn burgerize(string: &String, args: &BurgerizeArgs) -> String {
     let right_bun = &string[string.len() - args.right_bun_length..];
 
     let patty = &string[args.left_bun_length..string.len() - args.right_bun_length];
+
+    // TODO: Benchmark efficiency of various hashing algorithms
+    let mut hasher = DefaultHasher::new();
+    patty.hash(&mut hasher);
+    let hashpatty = hasher.finish();
+
+    let hashpatty = hashpatty
+        .to_string()
+        // Take the last digits (higher entropy)
+        .chars()
+        .rev()
+        .take(args.center_hashpatty_length)
+        // Keep the digits reversed
+        // It makes sense for the hashpatty to grow from left to right when considering
+        // the same input string and different hashpatty lengths
+        .collect::<String>();
+
     let hashpatty = format!(
         "{:0>hashpatty_length$}", // Pad with zeros if necessary to keep fixed length
-        &Hash32::hash(patty.as_bytes())
-            .to_string()
-            // Take the last digits (higher entropy)
-            .chars()
-            .rev()
-            .take(args.center_hashpatty_length)
-            // Don't care about reversing them again, they're supposedly random
-            // TODO: Reverse them anyways, it makes sense for the hashpatty to grow from left to
-            // right when considering the same input string and different hashpatty lengths
-            .collect::<String>(),
+        hashpatty,
         hashpatty_length = args.center_hashpatty_length,
     );
 
